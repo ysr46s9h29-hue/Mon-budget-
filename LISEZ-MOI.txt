@@ -1,0 +1,18 @@
+MON BUDGET — VERSION IPHONE
+
+Contenu :
+- index.html : l’application
+- manifest.json et sw.js : installation PWA et cache hors ligne
+- icon-192.png / icon-512.png : icône
+
+IMPORTANT : pour installer une PWA sur iPhone, elle doit être accessible via une URL HTTPS. Le dossier seul ne peut pas être ajouté directement comme une application depuis Fichiers.
+
+Publication simple (GitHub Pages) :
+1. Crée/connecte-toi à un compte GitHub.
+2. Crée un dépôt public nommé mon-budget.
+3. Téléverse tous les fichiers de ce dossier à la racine du dépôt.
+4. Dans Settings > Pages, active la publication depuis la branche main et le dossier /(root).
+5. Attends que GitHub donne une URL HTTPS.
+6. Sur l’iPhone, ouvre cette URL dans Safari > bouton Partager > Sur l’écran d’accueil > Ajouter.
+
+Les dépenses et le montant épargné sont enregistrés dans le stockage local du navigateur sur cet appareil. Évite d’effacer les données du site, et garde une copie séparée si ces données sont importantes. Cette version n’est pas synchronisée entre appareils.
