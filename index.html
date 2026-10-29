@@ -1,103 +1,230 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#203a56">
+<meta name="theme-color" content="#111111">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Mon Budget">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>Mon Budget</title>
 <style>
-:root{--navy:#203a56;--bg:#f3f6fa;--ink:#1d2b3a;--muted:#68788a;--line:#e1e7ee;--green:#21865b;--red:#c0392b;--white:#fff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-main{max-width:620px;margin:auto;padding:18px 15px 32px}.hero{background:var(--navy);color:white;border-radius:23px;padding:22px;margin-bottom:16px;box-shadow:0 8px 22px #203a5620}.eyebrow{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;opacity:.78}.hero h1{margin:7px 0 4px;font-size:28px}.hero p{margin:0;color:#d8e4ef;font-size:14px}.hero .big{font-size:34px;font-weight:750;margin-top:18px}.hero .sub{font-size:12px;color:#d8e4ef}
-.card{background:white;border:1px solid var(--line);border-radius:18px;padding:16px;margin:13px 0;box-shadow:0 3px 12px #1a355008}.section-title{font-size:17px;font-weight:750;margin:0 0 13px}.weeks{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.week{border:0;border-radius:12px;padding:12px 3px;background:#edf1f6;color:var(--ink);font-weight:700;font-size:13px}.week.active{background:var(--navy);color:white}.catrow{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.catrow:last-child{border-bottom:0}.emoji{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font-size:21px;background:#edf3f8}.catinfo{flex:1;min-width:0}.catname{font-weight:700}.small{font-size:12px;color:var(--muted);margin-top:4px}.remaining{text-align:right;font-weight:800;font-size:18px;white-space:nowrap}.good{color:var(--green)}.bad{color:var(--red)}.bar{height:6px;background:#edf1f5;border-radius:20px;overflow:hidden;margin-top:8px}.fill{height:100%;background:#48a17b;border-radius:20px}.fill.over{background:var(--red)}label{display:block;font-size:13px;font-weight:650;margin:10px 0 6px}input,select{font:inherit;width:100%;border:1px solid #d7dfe8;border-radius:12px;padding:12px;background:#fff;color:var(--ink);min-height:44px}button{font:inherit;cursor:pointer}.primary{width:100%;border:0;border-radius:13px;background:var(--navy);color:white;font-weight:750;padding:14px;margin-top:13px}.secondary{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 11px;color:var(--ink)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.expense{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.expense:last-child{border-bottom:0}.expense-main{flex:1;min-width:0}.expense-title{font-weight:700;overflow-wrap:anywhere}.expense-meta{font-size:12px;color:var(--muted);margin-top:3px}.expense-amount{font-weight:750;white-space:nowrap}.delete{border:0;background:#fff0ed;color:var(--red);border-radius:10px;padding:9px;font-size:17px}.summary{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#edf3f8;border-radius:13px;padding:14px;margin-top:12px}.summary strong{font-size:21px}.savingline{display:flex;justify-content:space-between;gap:10px;align-items:center}.savingbar{height:10px;background:#edf1f5;border-radius:20px;overflow:hidden;margin:13px 0}.savingbar div{height:100%;background:#48a17b}.hint{font-size:12px;color:var(--muted);line-height:1.5}.footer{text-align:center;color:var(--muted);font-size:11px;padding:16px 6px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.pill{border-radius:99px;background:#edf3f8;padding:7px 10px;font-size:12px;font-weight:650}.empty{font-size:13px;color:var(--muted);text-align:center;padding:18px 4px}.tinybtn{border:1px solid var(--line);border-radius:10px;background:#fff;padding:8px 10px;font-size:12px}
+:root{--bg:#f7f7f7;--ink:#151515;--muted:#777;--line:#e5e5e5;--accent:#8055d9;--soft:#f0eaff;--red:#c93636;--green:#287b51;--white:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+main{max-width:620px;margin:auto;padding:16px 14px 32px}
+.hero{background:#111;color:white;border-radius:24px;padding:23px;margin-bottom:15px}
+.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#c7b5ff}
+.hero h1{margin:8px 0;font-size:30px}
+.hero p{margin:0;color:#ccc;font-size:13px;line-height:1.5}
+.hero .big{font-size:35px;font-weight:800;margin-top:20px}
+.hero .sub{font-size:12px;color:#ccc;margin-top:4px}
+.card{background:white;border:1px solid var(--line);border-radius:19px;padding:16px;margin:13px 0}
+.section-title{font-size:17px;font-weight:800;margin:0 0 14px}
+.weeks{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.week{border:1px solid var(--line);border-radius:11px;padding:12px 2px;background:#f5f5f5;color:#222;font-size:12px;font-weight:700}
+.week.active{background:#111;color:white;border-color:#111}
+.catrow{display:flex;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}
+.catrow:last-child{border-bottom:0}
+.emoji{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:var(--soft)}
+.catinfo{flex:1;min-width:0}
+.catname{font-weight:750}
+.small{font-size:12px;color:var(--muted);margin-top:4px}
+.remaining{text-align:right;font-weight:800;font-size:16px;white-space:nowrap}
+.good{color:var(--green)}.bad{color:var(--red)}
+.bar{height:6px;background:#eee;border-radius:20px;overflow:hidden;margin-top:8px}
+.fill{height:100%;background:var(--accent);border-radius:20px}
+.fill.over{background:var(--red)}
+label{display:block;font-size:13px;font-weight:700;margin:11px 0 6px}
+input,select{font:inherit;width:100%;border:1px solid #ddd;border-radius:11px;padding:12px;background:white;color:#111;min-height:44px}
+input:focus,select:focus{outline:2px solid #d8caff;border-color:var(--accent)}
+button{font:inherit;cursor:pointer}
+.primary{width:100%;border:0;border-radius:12px;background:#111;color:white;font-weight:750;padding:14px;margin-top:13px}
+.primary:active{background:var(--accent)}
+.secondary{border:1px solid #ddd;background:white;border-radius:10px;padding:10px 12px;color:#111}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.expense{display:flex;align-items:center;gap:9px;padding:12px 0;border-bottom:1px solid var(--line)}
+.expense:last-child{border-bottom:0}
+.expense-main{flex:1;min-width:0}
+.expense-title{font-weight:700;overflow-wrap:anywhere}
+.expense-meta{font-size:12px;color:var(--muted);margin-top:4px}
+.expense-amount{font-weight:750;white-space:nowrap}
+.delete{border:0;background:#fff0f0;color:var(--red);border-radius:9px;padding:9px;font-size:17px}
+.summary{display:flex;justify-content:space-between;gap:10px;align-items:center;background:#f2edff;border-radius:13px;padding:14px;margin-top:12px}
+.summary strong{font-size:21px}
+.savingline{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.savingbar{height:9px;background:#eee;border-radius:20px;overflow:hidden;margin:13px 0}
+.savingbar div{height:100%;background:var(--accent)}
+.hint{font-size:12px;color:var(--muted);line-height:1.5}
+.footer{text-align:center;color:var(--muted);font-size:11px;padding:16px 6px}
+.empty{font-size:13px;color:var(--muted);text-align:center;padding:18px 4px}
+.settings{background:#faf8ff;border:1px solid #e6dcff;border-radius:14px;padding:13px;margin-top:12px}
+.settings h3{font-size:14px;margin:0 0 8px}
+.settings .formgrid{gap:9px}
+.settings label{font-size:12px}
+.purple{color:var(--accent)}
 </style>
 </head>
 <body>
 <main>
-  <section class="hero">
-    <div class="eyebrow">Ton tableau de bord</div>
-    <h1>Mon Budget</h1>
-    <p>5 semaines pour aller sereinement jusqu’au prochain salaire.</p>
-    <div class="big" id="weekLeft">205,80 €</div>
-    <div class="sub">restants cette semaine · budget prévu 205,80 €</div>
-  </section>
+<section class="hero">
+<div class="eyebrow">TON TABLEAU DE BORD</div>
+<h1>Mon Budget ✦</h1>
+<p>5 semaines pour aller sereinement jusqu’au prochain salaire.</p>
+<div class="big" id="weekLeft">205,80 €</div>
+<div class="sub">restants cette semaine</div>
+</section>
 
-  <section class="card">
-    <h2 class="section-title">Choisir une semaine</h2>
-    <div class="weeks" id="weekButtons"></div>
-  </section>
+<section class="card">
+<h2 class="section-title">Mes semaines</h2>
+<div class="weeks" id="weekButtons"></div>
+</section>
 
-  <section class="card">
-    <h2 class="section-title">Mes enveloppes</h2>
-    <div id="categoryBalances"></div>
-    <div class="summary"><div><div class="small">Total restant cette semaine</div><strong id="totalLeft">205,80 €</strong></div><div style="text-align:right"><div class="small">Dépensé</div><b id="totalSpent">0,00 €</b></div></div>
-  </section>
+<section class="card">
+<h2 class="section-title">Mes enveloppes</h2>
+<div id="categoryBalances"></div>
+<div class="summary">
+<div><div class="small">Total restant</div><strong id="totalLeft">205,80 €</strong></div>
+<div style="text-align:right"><div class="small">Dépensé</div><b id="totalSpent">0,00 €</b></div>
+</div>
+<button class="secondary" id="toggleSettings" style="width:100%;margin-top:12px">✎ Modifier mes enveloppes</button>
+<div id="budgetSettings" class="settings" hidden>
+<h3>Budgets par semaine (€)</h3>
+<div class="formgrid">
+<div><label for="bBouffe">🛒 Bouffe</label><input id="bBouffe" type="number" min="0" step="0.01"></div>
+<div><label for="bEssence">⛽ Essence</label><input id="bEssence" type="number" min="0" step="0.01"></div>
+<div><label for="bPlaisir">🎉 Plaisir</label><input id="bPlaisir" type="number" min="0" step="0.01"></div>
+</div>
+<button class="primary" id="saveBudgets">Enregistrer mes budgets</button>
+</div>
+</section>
 
-  <section class="card">
-    <h2 class="section-title">Ajouter une dépense</h2>
-    <label for="desc">Achat / détail</label><input id="desc" placeholder="Ex. courses, plein, cinéma" maxlength="100">
-    <div class="formgrid">
-      <div><label for="category">Catégorie</label><select id="category"><option>Bouffe</option><option>Essence</option><option>Plaisir</option></select></div>
-      <div><label for="amount">Montant (€)</label><input id="amount" inputmode="decimal" type="number" min="0.01" step="0.01" placeholder="24,50"></div>
-    </div>
-    <label for="date">Date de l’achat</label><input id="date" type="date">
-    <button class="primary" id="add">＋ Enregistrer l’achat</button>
-  </section>
+<section class="card">
+<h2 class="section-title">Ajouter une dépense</h2>
+<label for="desc">Achat / détail</label>
+<input id="desc" placeholder="Ex. courses, plein, cinéma" maxlength="100">
+<div class="formgrid">
+<div><label for="category">Catégorie</label><select id="category"><option>Bouffe</option><option>Essence</option><option>Plaisir</option></select></div>
+<div><label for="amount">Montant (€)</label><input id="amount" inputmode="decimal" type="number" min="0.01" step="0.01" placeholder="24,50"></div>
+</div>
+<label for="date">Date de l’achat</label>
+<input id="date" type="date">
+<button class="primary" id="add">＋ Enregistrer l’achat</button>
+</section>
 
-  <section class="card">
-    <h2 class="section-title">Achats de la semaine <span id="listWeek">1</span></h2>
-    <div id="expenses"></div>
-    <button class="secondary" id="clearWeek" style="margin-top:12px">Effacer les achats de cette semaine</button>
-  </section>
+<section class="card">
+<h2 class="section-title">Achats — semaine <span id="listWeek">1</span></h2>
+<div id="expenses"></div>
+<button class="secondary" id="clearWeek" style="margin-top:12px">Effacer les achats de cette semaine</button>
+</section>
 
-  <section class="card">
-    <h2 class="section-title">Mon épargne Livret A</h2>
-    <div class="savingline"><div><div class="small">Objectif à mettre de côté</div><strong style="font-size:24px">250,00 €</strong></div><div style="text-align:right"><div class="small">Déjà épargné</div><strong id="savedText" style="font-size:22px">0,00 €</strong></div></div>
-    <div class="savingbar"><div id="savingFill" style="width:0%"></div></div>
-    <label for="saved">Montant actuellement mis de côté (€)</label><input id="saved" type="number" inputmode="decimal" min="0" step="0.01" value="0">
-    <p class="hint">Ce suivi est séparé des dépenses hebdomadaires. Mets à jour le montant lorsque tu verses de l’argent sur ton Livret A.</p>
-  </section>
+<section class="card">
+<h2 class="section-title">Mon épargne Livret A</h2>
+<div class="savingline">
+<div><div class="small">Mon objectif</div><strong id="goalText" style="font-size:24px">250,00 €</strong></div>
+<div style="text-align:right"><div class="small">Déjà épargné</div><strong id="savedText" style="font-size:22px">0,00 €</strong></div>
+</div>
+<div class="savingbar"><div id="savingFill" style="width:0%"></div></div>
+<label for="goal">Modifier mon objectif (€)</label>
+<input id="goal" type="number" min="0" step="0.01" value="250">
+<label for="saved">Montant actuellement mis de côté (€)</label>
+<input id="saved" type="number" min="0" step="0.01" value="0">
+<button class="primary" id="saveSavings">Enregistrer mon épargne</button>
+<p class="hint">Ce suivi est séparé de tes dépenses. Modifie l’objectif et le montant épargné quand tu le souhaites.</p>
+</section>
 
-  <section class="card">
-    <h2 class="section-title">Récapitulatif des 5 semaines</h2>
-    <div id="overview"></div>
-  </section>
-  <div class="footer">Tes données sont enregistrées sur cet appareil. Pense à exporter une copie si tu changes de téléphone.</div>
+<section class="card">
+<h2 class="section-title">Récapitulatif des 5 semaines</h2>
+<div id="overview"></div>
+</section>
+<div class="footer">Tes données sont enregistrées sur cet appareil. ✦ Mon Budget</div>
 </main>
 <script>
 const DEFAULTS={Bouffe:100,Essence:30,Plaisir:75.8};
 const icons={Bouffe:"🛒",Essence:"⛽",Plaisir:"🎉"};
-const money=n=>Number(n).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
-let state={week:1,budgets:{...DEFAULTS},expenses:[],saved:0};
-try{const old=JSON.parse(localStorage.getItem('monBudgetV1'));if(old&&typeof old==='object')state={...state,...old,budgets:{...DEFAULTS,...old.budgets},expenses:Array.isArray(old.expenses)?old.expenses:[]}}catch(e){}
+const money=n=>Number(n||0).toLocaleString('fr-FR',{style:'currency',currency:'EUR'});
+let state={week:1,budgets:{...DEFAULTS},expenses:[],saved:0,goal:250};
+try{
+ const old=JSON.parse(localStorage.getItem('monBudgetV1'));
+ if(old&&typeof old==='object')state={...state,...old,budgets:{...DEFAULTS,...old.budgets},expenses:Array.isArray(old.expenses)?old.expenses:[],goal:Number(old.goal??250)};
+}catch(e){}
 const $=id=>document.getElementById(id);
 const save=()=>{try{localStorage.setItem('monBudgetV1',JSON.stringify(state))}catch(e){}};
-function expensesFor(w){return state.expenses.filter(e=>e.week===w)}
-function spent(cat,w=state.week){return expensesFor(w).filter(e=>e.category===cat).reduce((s,e)=>s+Number(e.amount),0)}
-function remaining(cat,w=state.week){return Number(state.budgets[cat])-spent(cat,w)}
+function expensesFor(w){return state.expenses.filter(e=>Number(e.week)===w)}
+function spent(cat,w=state.week){return expensesFor(w).filter(e=>e.category===cat).reduce((s,e)=>s+Number(e.amount||0),0)}
+function remaining(cat,w=state.week){return Number(state.budgets[cat]||0)-spent(cat,w)}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function render(){
- $('weekButtons').innerHTML=[1,2,3,4,5].map(w=>`<button class="week ${state.week===w?'active':''}" data-week="${w}">Semaine ${w}</button>`).join('');
+ $('weekButtons').innerHTML=[1,2,3,4,5].map(w=>`<button class="week ${state.week===w?'active':''}" data-week="${w}">S${w}</button>`).join('');
  $('weekButtons').querySelectorAll('button').forEach(b=>b.onclick=()=>{state.week=Number(b.dataset.week);save();render()});
- const cats=Object.keys(DEFAULTS), totalBudget=cats.reduce((s,c)=>s+Number(state.budgets[c]),0), totalSpent=cats.reduce((s,c)=>s+spent(c),0);
- $('categoryBalances').innerHTML=cats.map(c=>{let r=remaining(c),b=Number(state.budgets[c]),sp=spent(c);return `<div class="catrow"><div class="emoji">${icons[c]}</div><div class="catinfo"><div class="catname">${c}</div><div class="small">Budget ${money(b)} · Dépensé ${money(sp)}</div><div class="bar"><div class="fill ${r<0?'over':''}" style="width:${Math.min(100,b>0?sp/b*100:0)}%"></div></div></div><div class="remaining ${r<0?'bad':'good'}">${money(r)}</div></div>`}).join('');
- $('weekLeft').textContent=money(totalBudget-totalSpent);$('totalLeft').textContent=money(totalBudget-totalSpent);$('totalSpent').textContent=money(totalSpent);$('listWeek').textContent=state.week;
- const list=expensesFor(state.week).slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')||b.id-a.id);
- $('expenses').innerHTML=list.length?list.map(e=>`<div class="expense"><div class="expense-main"><div class="expense-title">${esc(e.desc||e.category)}</div><div class="expense-meta">${icons[e.category]||''} ${esc(e.category)}${e.date?' · '+new Date(e.date+'T12:00:00').toLocaleDateString('fr-FR'):''}</div></div><div class="expense-amount">${money(e.amount)}</div><button class="delete" data-delete="${e.id}" aria-label="Supprimer ${esc(e.desc)}">×</button></div>`).join(''):'<div class="empty">Aucun achat enregistré pour cette semaine.</div>';
- $('expenses').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{state.expenses=state.expenses.filter(e=>e.id!==Number(b.dataset.delete));save();render()});
- $('saved').value=state.saved;$('savedText').textContent=money(state.saved);$('savingFill').style.width=Math.min(100,Math.max(0,state.saved/250*100))+'%';
- $('overview').innerHTML=[1,2,3,4,5].map(w=>{let budget=cats.reduce((s,c)=>s+Number(state.budgets[c]),0),sp=cats.reduce((s,c)=>s+spent(c,w),0);return `<div class="catrow"><div class="catinfo"><div class="catname">Semaine ${w}${w===state.week?' · sélectionnée':''}</div><div class="small">Dépensé ${money(sp)} sur ${money(budget)}</div></div><div class="remaining ${budget-sp<0?'bad':'good'}">${money(budget-sp)}</div></div>`}).join('');
+ const cats=Object.keys(DEFAULTS);
+ const totalBudget=cats.reduce((s,c)=>s+Number(state.budgets[c]||0),0);
+ const totalSpent=cats.reduce((s,c)=>s+spent(c),0);
+ $('categoryBalances').innerHTML=cats.map(c=>{
+ let r=remaining(c),b=Number(state.budgets[c]||0),sp=spent(c);
+ return `<div class="catrow"><div class="emoji">${icons[c]}</div><div class="catinfo"><div class="catname">${c}</div><div class="small">Budget ${money(b)} · Dépensé ${money(sp)}</div><div class="bar"><div class="fill ${r<0?'over':''}" style="width:${Math.min(100,b>0?sp/b*100:0)}%"></div></div></div><div class="remaining ${r<0?'bad':'good'}">${money(r)}</div></div>`;
+ }).join('');
+ $('weekLeft').textContent=money(totalBudget-totalSpent);
+ $('totalLeft').textContent=money(totalBudget-totalSpent);
+ $('totalSpent').textContent=money(totalSpent);
+ $('listWeek').textContent=state.week;
+ const list=expensesFor(state.week).slice().sort((a,b)=>(b.date||'').localeCompare(a.date||'')||Number(b.id)-Number(a.id));
+ $('expenses').innerHTML=list.length?list.map(e=>`<div class="expense"><div class="expense-main"><div class="expense-title">${esc(e.desc||e.category)}</div><div class="expense-meta">${icons[e.category]||''} ${esc(e.category)}${e.date?' · '+new Date(e.date+'T12:00:00').toLocaleDateString('fr-FR'):''}</div></div><div class="expense-amount">${money(e.amount)}</div><button class="delete" data-delete="${e.id}" aria-label="Supprimer cette dépense">×</button></div>`).join(''):'<div class="empty">Aucun achat enregistré pour cette semaine.</div>';
+ $('expenses').querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{state.expenses=state.expenses.filter(e=>String(e.id)!==b.dataset.delete);save();render()});
+ $('goal').value=state.goal;
+ $('goalText').textContent=money(state.goal);
+ $('saved').value=state.saved;
+ $('savedText').textContent=money(state.saved);
+ $('savingFill').style.width=(state.goal>0?Math.min(100,Math.max(0,state.saved/state.goal*100)):0)+'%';
+ $('overview').innerHTML=[1,2,3,4,5].map(w=>{
+ let budget=cats.reduce((s,c)=>s+Number(state.budgets[c]||0),0);
+ let sp=cats.reduce((s,c)=>s+spent(c,w),0);
+ return `<div class="catrow"><div class="catinfo"><div class="catname">Semaine ${w}${w===state.week?' · sélectionnée':''}</div><div class="small">Dépensé ${money(sp)} sur ${money(budget)}</div></div><div class="remaining ${budget-sp<0?'bad':'good'}">${money(budget-sp)}</div></div>`;
+ }).join('');
 }
-$('add').onclick=()=>{let desc=$('desc').value.trim(),category=$('category').value,amount=Number(String($('amount').value).replace(',','.')),date=$('date').value;if(!Number.isFinite(amount)||amount<=0){$('amount').focus();return}state.expenses.push({id:Date.now(),week:state.week,desc:desc||category,category,amount:Math.round(amount*100)/100,date});$('desc').value='';$('amount').value='';save();render()};
-$('clearWeek').onclick=()=>{if(confirm('Supprimer toutes les dépenses de la semaine '+state.week+' ?')){state.expenses=state.expenses.filter(e=>e.week!==state.week);save();render()}};
-$('saved').onchange=()=>{state.saved=Math.max(0,Number($('saved').value)||0);save();render()};
+$('toggleSettings').onclick=()=>{
+ const panel=$('budgetSettings');
+ panel.hidden=!panel.hidden;
+ if(!panel.hidden){
+ $('bBouffe').value=state.budgets.Bouffe;
+ $('bEssence').value=state.budgets.Essence;
+ $('bPlaisir').value=state.budgets.Plaisir;
+ $('toggleSettings').textContent='Fermer les réglages';
+ }else $('toggleSettings').textContent='✎ Modifier mes enveloppes';
+};
+$('saveBudgets').onclick=()=>{
+ const vals={Bouffe:$('bBouffe').value,Essence:$('bEssence').value,Plaisir:$('bPlaisir').value};
+ if(Object.values(vals).some(v=>v.trim()===''||!Number.isFinite(Number(v))||Number(v)<0)){alert('Entre des budgets valides, égaux ou supérieurs à zéro.');return}
+ Object.keys(vals).forEach(c=>state.budgets[c]=Math.round(Number(vals[c])*100)/100);
+ save();render();
+ $('budgetSettings').hidden=true;
+ $('toggleSettings').textContent='✎ Modifier mes enveloppes';
+};
+$('add').onclick=()=>{
+ let desc=$('desc').value.trim(),category=$('category').value;
+ let amount=Number(String($('amount').value).replace(',','.')),date=$('date').value;
+ if(!Number.isFinite(amount)||amount<=0){alert('Entre un montant supérieur à zéro.');$('amount').focus();return}
+ state.expenses.push({id:Date.now(),week:state.week,desc:desc||category,category,amount:Math.round(amount*100)/100,date});
+ $('desc').value='';$('amount').value='';save();render();
+};
+$('clearWeek').onclick=()=>{
+ if(confirm('Supprimer toutes les dépenses de la semaine '+state.week+' ?')){
+ state.expenses=state.expenses.filter(e=>Number(e.week)!==state.week);save();render();
+ }
+};
+$('saveSavings').onclick=()=>{
+ const goal=Number($('goal').value),saved=Number($('saved').value);
+ if(!Number.isFinite(goal)||goal<0||!Number.isFinite(saved)||saved<0){alert('Entre des montants valides, égaux ou supérieurs à zéro.');return}
+ state.goal=Math.round(goal*100)/100;
+ state.saved=Math.round(saved*100)/100;
+ save();render();
+};
 $('date').value=new Date().toISOString().slice(0,10);
 render();
 if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
-</body></html>
+</body>
+</html>
